@@ -1,30 +1,33 @@
+import 'react-native-gesture-handler';
+
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Btn from './Btn';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import HomeScreen from './pantallas/HomeScreen';
+import ProfileScreen from './pantallas/ProfileScreen';
+
+const MyStack = createStackNavigator();
+
 export default function App() {
-
-  const Stack = createNativeStackNavigator();
   return (
-    <>
-    <View>
-       <Text style={styles.texto}>App principal</Text>
-      <Btn texto="texto"/>
-      <Btn texto="Otro btn"/>
-             <Btn
-          texto="Con console.log"
-          presionado={() => console.log("Debug", "Hola desde console.log")}
+    <NavigationContainer>
+      <MyStack.Navigator>
+        <MyStack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Inicio de la App' }}
         />
-        <Btn texto="texto"/>
-        <Btn texto="texto"/>
-        <Btn texto="asdasds"/>
-        <Btn texto="texto"/>
-        <Btn texto="texto"/>
-
-      
-     </View>
-    </>
+        <MyStack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ title: 'Mi Perfil' }}
+        />
+      </MyStack.Navigator>
+      <StatusBar style="auto" />
+    </NavigationContainer>
   );
 }
 
@@ -33,11 +36,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-
-  },
-  texto: {
-    fontSize: 25,
-    color: 'red',
+    justifyContent: 'center'
   }
 });
