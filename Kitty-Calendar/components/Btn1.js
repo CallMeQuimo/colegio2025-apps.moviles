@@ -1,14 +1,11 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const MiBoton = () => {
+const Btn1 = ({ texto = 'Botón Flexible', onPress }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => console.log('Presionado')}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Botón Flexible</Text>
+      <TouchableOpacity onPress={onPress} style={styles.button}>
+        <Text style={styles.buttonText}>{texto}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -16,10 +13,10 @@ const MiBoton = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    marginVertical: 10, //espacio entre botones
   },
   button: {
-    backgroundColor: 'red',
+    backgroundColor: 'black',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',
@@ -30,4 +27,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MiBoton;
+export default Btn1;

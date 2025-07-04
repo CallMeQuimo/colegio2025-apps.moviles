@@ -1,18 +1,30 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import Btn1 from './components/Btn1';
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>¡Bienvenido a HomeScreen!</Text>
-      <Text style={styles.subtitle}>Toca el botón para ir a la pantalla de perfil.</Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Profile')}
-      >
-        <Text style={styles.buttonText}>Ir a Perfil</Text>
-      </TouchableOpacity>
+      <View style={styles.header}>
+        <Text style={styles.title}>Bienvenido a Meow-Calendar</Text>
+        <Text style={styles.subtitle}>
+          Acaso ya tienes sesión?
+        </Text>
+      </View>
+
+      <View style={styles.buttonsContainer}>
+        <Btn1 
+          texto="Inicie sesión" 
+          onPress={() => console.log('Pantalla para inicio de sesión')} 
+          style=""
+        />
+        <Btn1 
+          texto="Cree una cuenta" 
+          onPress={() => console.log('Pantalla de crear cuenta')} 
+        />
+      </View>
+
     </View>
   );
 }
@@ -20,37 +32,28 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f0f4f8',
+    backgroundColor: '#9c6a2f',
     padding: 20,
+    justifyContent: 'space-between',
+  },
+  header: {
+    marginTop: 60,
+    alignItems: 'center',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: '#333',
+    color: '#fff',
   },
   subtitle: {
     fontSize: 18,
-    color: '#666',
-    marginBottom: 40,
+    color: '#f8f8f8',
     textAlign: 'center',
+    marginHorizontal: 20,
   },
-  button: {
-    backgroundColor: '#007bff',
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    borderRadius: 8,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: '600',
+  buttonsContainer: {
+    marginBottom: 60,
+    alignItems: 'center',
   },
 });
